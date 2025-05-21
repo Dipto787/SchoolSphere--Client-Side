@@ -1,17 +1,21 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query"; 
 import { FaAngleDoubleRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 
 const OurStudent = () => {
-    let [students, setStudents] = useState([]);
-    useEffect(() => {
-        axios.get('ourStudent.json')
-            .then((data) => {
-                setStudents(data.data)
-            })
-    }, [])
-    console.log(students)
+    let axiosSecure = UseAxiosSecure();
+
+    let { data: students = [], isLoading, refetch } = useQuery({
+        queryKey: ['students'],
+        queryFn: async () => {
+            const { data } = await axiosSecure.get('/students');
+            return data;
+        }
+    })
+
+    
+
     return (
         <div>
             <h1 className="text-center lg:mt-20 mt-20 text-4xl lg:text-6xl font-semibold text-red-500">------ Our Students ------</h1>
@@ -54,7 +58,7 @@ const OurStudent = () => {
                     </div>)
                 }
 
-                <Link className="btn  bg-[#4cc9f0]">See All <FaAngleDoubleRight size={22} />
+                <Link to={'/our-student'} className="btn  bg-[#4cc9f0]">See All <FaAngleDoubleRight size={22} />
                 </Link>
             </div>
         </div>
