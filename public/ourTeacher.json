@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Mr. Arif Hossain",
+    "subject": "Mathematics",
+    "experience": "10 years",
+    "photo": "https://randomuser.me/api/portraits/men/31.jpg",
+    "bio": "Expert in Algebra and Calculus, Mr. Arif makes math fun and approachable."
+  },
+  {
+    "name": "Ms. Laila Rahman",
+    "subject": "English Literature",
+    "experience": "8 years",
+    "photo": "https://randomuser.me/api/portraits/women/44.jpg",
+    "bio": "Her love for poetry and classic novels inspires every student she teaches."
+  },
+  {
+    "name": "Mr. Kamal Uddin",
+    "subject": "Physics",
+    "experience": "12 years",
+    "photo": "https://randomuser.me/api/portraits/men/45.jpg",
+    "bio": "Known for his engaging experiments and clear explanations of physics laws."
+  },
+  {
+    "name": "Ms. Nusrat Jahan",
+    "subject": "Biology",
+    "experience": "7 years",
+    "photo": "https://randomuser.me/api/portraits/women/22.jpg",
+    "bio": "Teaches biology with passion, making every class feel like a nature discovery."
+  },
+  {
+    "name": "Mr. Zahid Hasan",
+    "subject": "History",
+    "experience": "9 years",
+    "photo": "https://randomuser.me/api/portraits/men/56.jpg",
+    "bio": "His storytelling brings ancient civilizations and historical events to life."
+  },
+  {
+    "name": "Ms. Farzana Alam",
+    "subject": "Chemistry",
+    "experience": "6 years",
+    "photo": "https://randomuser.me/api/portraits/women/39.jpg",
+    "bio": "Specializes in Organic Chemistry and makes chemical reactions exciting."
+  },
+  {
+    "name": "Mr. Rezaul Karim",
+    "subject": "Computer Science",
+    "experience": "11 years",
+    "photo": "https://randomuser.me/api/portraits/men/75.jpg",
+    "bio": "Loves coding and teaches students how to build websites and apps from scratch."
+  },
+  {
+    "name": "Ms. Tania Akter",
+    "subject": "Geography",
+    "experience": "5 years",
+    "photo": "https://randomuser.me/api/portraits/women/60.jpg",
+    "bio": "Explores the world map and teaches about cultures and environments with passion."
+  },
+  {
+    "name": "Mr. Salman Ahmed",
+    "subject": "Economics",
+    "experience": "13 years",
+    "photo": "https://randomuser.me/api/portraits/men/64.jpg",
+    "bio": "Breaks down complex economic theories into simple real-world examples."
+  },
+  {
+    "name": "Ms. Rima Chowdhury",
+    "subject": "Bangla",
+    "experience": "10 years",
+    "photo": "https://randomuser.me/api/portraits/women/33.jpg",
+    "bio": "Brings the beauty of Bangla language and literature alive in her classroom."
+  },
+  {
+    "name": "Mr. Mahfuz Siddique",
+    "subject": "Islamic Studies",
+    "experience": "14 years",
+    "photo": "https://randomuser.me/api/portraits/men/88.jpg",
+    "bio": "Guides students through the teachings of Islam with wisdom and compassion."
+  },
+  {
+    "name": "Ms. Shanta Rahim",
+    "subject": "Art",
+    "experience": "4 years",
+    "photo": "https://randomuser.me/api/portraits/women/12.jpg",
+    "bio": "Encourages creativity and self-expression through painting and drawing."
+  },
+  {
+    "name": "Mr. Nayeem Hossain",
+    "subject": "Physical Education",
+    "experience": "6 years",
+    "photo": "https://randomuser.me/api/portraits/men/29.jpg",
+    "bio": "Promotes fitness, teamwork, and discipline through fun activities and sports."
+  },
+  {
+    "name": "Ms. Mita Khatun",
+    "subject": "Civics",
+    "experience": "9 years",
+    "photo": "https://randomuser.me/api/portraits/women/58.jpg",
+    "bio": "Teaches students about rights, responsibilities, and government structure."
+  },
+  {
+    "name": "Mr. Shoaib Akram",
+    "subject": "Music",
+    "experience": "7 years",
+    "photo": "https://randomuser.me/api/portraits/men/19.jpg",
+    "bio": "Introduces students to classical and modern music, building rhythm and melody."
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Classroom A1",
+    "floor": 1,
+    "capacity": 50,
+    "subject": "Mathematics",
+    "teacher": "Mr. Arif Hossain",
+    "image": "https://images.unsplash.com/photo-1571260899304-425eee4c7efc",
+    "description": "A spacious math classroom equipped with whiteboards, projectors, and group seating arrangements."
+  },
+  {
+    "id": 2,
+    "name": "Classroom B1",
+    "floor": 1,
+    "capacity": 48,
+    "subject": "English",
+    "teacher": "Ms. Sumaiya Akter",
+    "image": "https://images.unsplash.com/photo-1588072432836-e10032774350",
+    "description": "Bright and engaging English classroom filled with books, posters, and creative learning spaces."
+  },
+  {
+    "id": 3,
+    "name": "Classroom C1",
+    "floor": 2,
+    "capacity": 55,
+    "subject": "Physics",
+    "teacher": "Dr. Mahmud Hasan",
+    "image": "https://images.unsplash.com/photo-1596495577886-d920f1fb7238",
+    "description": "Well-equipped physics lab with experimental tools, high stools, and large workbenches for group activities."
+  },
+  {
+    "id": 4,
+    "name": "Classroom D1",
+    "floor": 2,
+    "capacity": 52,
+    "subject": "Chemistry",
+    "teacher": "Mrs. Nasrin Sultana",
+    "image": "https://i.ibb.co/Rp7kLPkc/m-monk-E813-FON0w-DQ-unsplash.jpg",
+    "description": "Modern chemistry lab with safety equipment, fume hoods, and shelves full of scientific instruments."
+  },
+  {
+    "id": 5,
+    "name": "Classroom E1",
+    "floor": 3,
+    "capacity": 60,
+    "subject": "Biology",
+    "teacher": "Mr. Faridul Islam",
+    "image": "https://i.ibb.co/KthRPNH/ivan-aleksic-PDRFee-Dni-Ck-unsplash-1.jpg",
+    "description": "Interactive biology classroom with models, microscopes, and nature charts on every wall."
+  },
+  {
+    "id": 6,
+    "name": "Classroom F1",
+    "floor": 3,
+    "capacity": 47,
+    "subject": "History",
+    "teacher": "Ms. Ruma Chowdhury",
+    "image": "https://i.ibb.co/bRXSqv4p/pexels-pixabay-256395.jpg",
+    "description": "A calm and quiet room filled with history maps, timelines, and documentary visuals."
+  },
+  {
+    "id": 7,
+    "name": "Classroom G1",
+    "floor": 4,
+    "capacity": 58,
+    "subject": "Geography",
+    "teacher": "Mr. Tanvir Rahman",
+    "image": "https://i.ibb.co/XkK8YfPC/pexels-artstel-4019754.jpg",
+    "description": "Dynamic classroom with 3D globes, world maps, and digital screens for geographical simulations."
+  },
+  {
+    "id": 8,
+    "name": "Classroom H1",
+    "floor": 4,
+    "capacity": 53,
+    "subject": "Computer Science",
+    "teacher": "Ms. Liza Ahmed",
+    "image": "https://i.ibb.co/KcBdyW6S/pexels-pixabay-356065.jpg",
+    "description": "Fully digital computer lab with desktop stations, high-speed internet, and interactive programming boards."
+  }
+]
