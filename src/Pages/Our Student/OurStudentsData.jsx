@@ -3,20 +3,28 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import UseAxiosSecure from '../../hooks/UseAxiosSecure';
 
-const OurStudentsData = ({ category, className }) => {
+const OurStudentsData = ({ category, className, page, size }) => {
     let axiosSecure = UseAxiosSecure();
 
     let { data: students = [], isLoading, refetch } = useQuery({
-        queryKey: ['students', category, className],
+        queryKey: ['students', category, className, page, size],
         queryFn: async () => {
-            const { data } = await axiosSecure.get(`/students?category=${category}&&className=${className}`);
+            const { data } = await axiosSecure.get(`/students?category=${category}&&className=${className}&&page=${page}&&size=${size}`);
             return data;
         },
-       
+
     })
+    console.log(students.length)
+
+
+
+
+
+
+
 
     return (
-        <div className="grid grid-cols-1  mb-10 gap-10  px-5 lg:mt-10 lg:grid-cols-3">
+        <div className="grid grid-cols-1  mt-4 w-full   mb-10 gap-10  px-5 lg:mt-10 lg:grid-cols-3">
             {
                 students.map(student => <div className=" p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
                     <img src={student.image} alt="" className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
