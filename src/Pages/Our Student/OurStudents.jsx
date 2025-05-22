@@ -55,8 +55,8 @@ const OurStudents = () => {
                     </TabPanel>
                 </Tabs>
 
-                <div >
-                    <select onSelect={handleFilterByClass} defaultValue="Select class" className="select">
+                <div  className='hidden lg:flex'>
+                    <select onSelect={handleFilterByClass} defaultValue="Select  class" className="select">
                         <option>Select Class</option>
                         <option>4</option>
                         <option>5</option>
@@ -72,12 +72,11 @@ const OurStudents = () => {
             </div>
             {/* Pagination */}
 
-            <div className='text-center m-4 '>
-                {/* <p>{currentPage}</p> */}
+            <div className='lg:text-center m-4 space-y-3   '>
                 {
                     pages.map(page => (<button onClick={() => setCurrentPage(page)}
 
-                        className={`btn mr-4 border-2  ${page === currentPage ? 'bg-blue-500 text-white' : ''} px-8 text-center`}>{page}</button>
+                        className={`lg:btn-lg btn btn-sm mr-2 lg:mr-4 border-2  ${page === currentPage ? 'bg-blue-500  text-white' : ' '} px-4 lg:px-8 text-center`}>{page}</button>
                     ))
                 }
 
