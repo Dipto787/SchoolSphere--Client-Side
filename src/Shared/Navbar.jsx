@@ -7,6 +7,7 @@ const Navbar = () => {
     let Links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/our-student'}>Our Student</NavLink></li>
+        <li><NavLink to={'/our-benefits'}>Our Benefits</NavLink></li>
         <li><NavLink to={'/registration'}>Registration</NavLink></li>
         <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
 
