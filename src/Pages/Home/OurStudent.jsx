@@ -22,7 +22,7 @@ const OurStudent = () => {
             <div className="grid grid-cols-1 gap-10 mt-16 px-5 lg:mt-32 lg:grid-cols-3">
                 {
                     students.slice(0, 9).map(student => <div className=" p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
-                        <img src={student.image} alt="" className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
+                        <img src={student.img} alt="" className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
                         <div className="mt-6 mb-2">
                             <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-600">{student.name}</span>
                             <div className="flex justify-between">
@@ -58,9 +58,9 @@ const OurStudent = () => {
                     </div>)
                 }
 
-                <Link to={'/our-student'} className="btn  bg-[#4cc9f0]">See All <FaAngleDoubleRight size={22} />
-                </Link>
             </div>
+                <Link to={'/our-student'} className="btn mt-4   bg-[#4cc9f0]">See All <FaAngleDoubleRight size={22} />
+                </Link>
         </div>
     );
 };

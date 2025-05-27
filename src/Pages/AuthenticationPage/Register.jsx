@@ -50,6 +50,7 @@ const Register = () => {
             toast.error(error.message)
         }
     }
+    
 
 
     return (
@@ -73,7 +74,8 @@ const Register = () => {
                         <label className="label">Password</label>
                         <input type="password" className="input w-full" placeholder="Password" {...register('password', { required: true })} />
                         {errors.password && <p className='text-lg font-semibold text-red-600 '>password is required</p>}
-                        <button disabled={loading} className="btn bg-[#ff3811] text-white mt-4">{loading ? <FaSpinner className='animate-spin text-center' /> : 'Register'}</button>
+                        <button disabled={loading} className="btn bg-[#ff3811] text-white mt-4">
+                            {  loading ? <FaSpinner className='animate-spin text-center' /> : 'Register'}</button>
                     </form>
 
                     <div className="divider mt-8">or sign up with</div>

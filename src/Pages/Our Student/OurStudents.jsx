@@ -12,6 +12,7 @@ const OurStudents = () => {
     let [gender, setGender] = useState('');
     let handleFilterByClass = async (e) => {
         setCurrentPage(0);
+        console.log(e.target.value)
         setClassName(e.target.value)
     }
 
@@ -33,8 +34,8 @@ const OurStudents = () => {
                 <Tabs onSelect={(index) => {
                     setCurrentPage(0);
                     if (index === 0) setGender('All Students');  
-                    else if (index === 1) setGender('Male');
-                    else if (index === 2) setGender('Female');
+                    else if (index === 1) setGender('male');
+                    else if (index === 2) setGender('female');
                 }} className={'  px-4'}>
                     <TabList>
                         <Tab>All Students</Tab>
@@ -47,24 +48,24 @@ const OurStudents = () => {
                     </TabPanel>
 
                     <TabPanel>
-                        <OurStudentsData className={className} page={currentPage} size={perPage} category={'Male'}></OurStudentsData>
+                        <OurStudentsData className={className} page={currentPage} size={perPage} category={'male'}></OurStudentsData>
                     </TabPanel>
 
                     <TabPanel>
-                        <OurStudentsData className={className} page={currentPage} size={perPage} category={'Female'}></OurStudentsData>
+                        <OurStudentsData className={className} page={currentPage} size={perPage} category={'female'}></OurStudentsData>
                     </TabPanel>
                 </Tabs>
 
                 <div  className='hidden lg:flex'>
-                    <select onSelect={handleFilterByClass} defaultValue="Select  class" className="select">
+                    <select onChange={handleFilterByClass} defaultValue="Select  class" className="select">
                         <option>Select Class</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
+                        <option value={'4'}>4</option>
+                        <option value={'5'}>5</option>
+                        <option value={'6'}>6</option>
+                        <option value={'7'}>7</option>
+                        <option value={'8'}>8</option>
+                        <option value={'9'}>9</option>
+                        <option value={'10'}>10</option>
                     </select>
                 </div>
 

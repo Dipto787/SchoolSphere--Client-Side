@@ -1,16 +1,60 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
-
+import IsStudent from "../hooks/IsStudent";
+import IsAdmin from "../hooks/IsAdmin";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import UseAxiosSecure from "../hooks/UseAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 const Navbar = () => {
-    let { user,logout } = useContext(AuthContext)
+    let { user, logout } = useContext(AuthContext)
+    let { student, isLoading } = IsStudent();
+    let { isAdmin, isLoading: load } = IsAdmin();
+    let axiosSecure = UseAxiosSecure(); 
+    let { data: students = [], refetch } = useQuery({
+        queryKey: ['students'],
+        queryFn: async () => {
+            let { data } = await axiosSecure.get('/students/admin')
+            return data
+        }
+    })
+    refetch();
+
+    let studet = students.filter(student => student.isRegistration === false);
+    console.log(studet)
+
     let Links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/our-student'}>Our Student</NavLink></li>
         <li><NavLink to={'/our-benefits'}>Our Benefits</NavLink></li>
-        <li><NavLink to={'/registration'}>Registration</NavLink></li>
-        <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
 
+        <div className="flex">
+
+
+
+            {
+                !load && !isAdmin?.admin === true ? student?.isRegistration === true ? '' : <li><NavLink to={'/registration'}>Registration</NavLink></li> : ''
+            }
+
+            {
+                !isLoading && student?.isRegistration === true || isAdmin?.admin === true ?
+                    <li ><NavLink to={'/dashboard'}>Dashboard</NavLink></li> : undefined
+
+
+            }
+
+
+        </div>
+
+
+
+                {
+                    isAdmin.admin===true?      <div className="relative">
+            <li><NavLink to={'/dashboard/our-students'}><IoMdNotificationsOutline size={30} /></NavLink> </li>
+            <p className="bg-red-500 absolute px-3 text-lg -top-4 left-8  text-white py-1 rounded-full">
+                {studet.length}</p>
+        </div>:''
+                }
 
 
     </>;
@@ -48,7 +92,7 @@ const Navbar = () => {
                             <ul
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                             
+
                                 <li onClick={logout} className=" cursor-pointer btn-sm">Logout</li>
                             </ul>
                         </div>

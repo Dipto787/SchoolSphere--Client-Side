@@ -4,7 +4,7 @@ import Footer from "../Shared/Footer";
 
 const Root = () => {
     let location = useLocation();
-    let unable = (location?.pathname === '/login') || (location?.pathname === '/register')
+    let unable = (location?.pathname === '/login') || (location?.pathname === '/register') || (location?.pathname==='/registration')
     return (
         <div>
             {!unable && <Navbar></Navbar>}
