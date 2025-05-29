@@ -13,6 +13,8 @@ import RegistrationStudent from "../Pages/RegistrationStudent";
 import StudentRoute from "./StudentRoute"; 
 import OurStudentsAdmin from "../Pages/Dashboard/OurStudentsAdmin";
 import AllStudents from "../Pages/Dashboard/AllStudents";
+import AddRoutine from "../Pages/Dashboard/AddRoutine";
+import SeeRoutine from "../Pages/Dashboard/SeeRoutine";
 
 const Routes = createBrowserRouter([
     {
@@ -66,6 +68,17 @@ const Routes = createBrowserRouter([
             {
                 path:'all-students',
                 element:<AllStudents></AllStudents>
+            },
+            {
+                path:'add-routine',
+                element:<AddRoutine></AddRoutine>
+            },
+            {
+                path:'see-routine',
+                element:<SeeRoutine></SeeRoutine>
+            },
+            {
+                path:'/'
             }
         ]
     }

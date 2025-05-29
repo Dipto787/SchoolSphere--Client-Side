@@ -10,8 +10,8 @@ const Navbar = () => {
     let { user, logout } = useContext(AuthContext)
     let { student, isLoading } = IsStudent();
     let { isAdmin, isLoading: load } = IsAdmin();
-    let axiosSecure = UseAxiosSecure(); 
-    let { data: students = [], refetch } = useQuery({
+    let axiosSecure = UseAxiosSecure();
+    let { data: students = [], refetch, isLoading: isLoadings } = useQuery({
         queryKey: ['students'],
         queryFn: async () => {
             let { data } = await axiosSecure.get('/students/admin')
@@ -20,9 +20,15 @@ const Navbar = () => {
     })
     refetch();
 
+    if (isLoading || load || isLoading || isLoadings) {
+        return;
+    }
+
     let studet = students.filter(student => student.isRegistration === false);
     console.log(studet)
-
+    if (load) {
+        return;
+    }
     let Links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/our-student'}>Our Student</NavLink></li>
@@ -48,13 +54,13 @@ const Navbar = () => {
 
 
 
-                {
-                    isAdmin.admin===true?      <div className="relative">
-            <li><NavLink to={'/dashboard/our-students'}><IoMdNotificationsOutline size={30} /></NavLink> </li>
-            <p className="bg-red-500 absolute px-3 text-lg -top-4 left-8  text-white py-1 rounded-full">
-                {studet.length}</p>
-        </div>:''
-                }
+        {
+            isAdmin.admin === true ? <div className="relative">
+                <li><NavLink to={'/dashboard/our-students'}><IoMdNotificationsOutline size={30} /></NavLink> </li>
+                <p className="bg-red-500 absolute px-3 text-lg -top-4 left-8  text-white py-1 rounded-full">
+                    {studet.length}</p>
+            </div> : ''
+        }
 
 
     </>;

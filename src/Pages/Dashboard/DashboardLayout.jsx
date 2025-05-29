@@ -10,6 +10,8 @@ import { FaHome } from "react-icons/fa";
 import { PiStudentFill } from "react-icons/pi";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { IoAddCircleSharp } from "react-icons/io5";
+import { CiViewTimeline } from "react-icons/ci";
+import { TbDatabaseExport } from "react-icons/tb";
 
 
 const DashboardLayout = () => {
@@ -28,7 +30,9 @@ const DashboardLayout = () => {
 
                             <li><NavLink to={'all-students'} className="flex gap-2"> <FaPeopleGroup  size={24} />All Students</NavLink></li>
 
-                            <li><NavLink to={'myC--lassRoom'} className="flex gap-2"> <IoAddCircleSharp size={24} />Add Teacher</NavLink></li>
+                            <li><NavLink to={'add-routine'} className="flex gap-2"> <CiViewTimeline size={24} />Add Routine</NavLink></li>
+
+                            <li><NavLink to={'see-routine'} className="flex gap-2"> <TbDatabaseExport  size={24} />See Routine</NavLink></li>
 
                             <li><NavLink to={'myC--lassRoom'} className="flex gap-2"> <FaUser size={24} />Users</NavLink></li>
 
