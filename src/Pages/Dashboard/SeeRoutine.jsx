@@ -12,6 +12,11 @@ const SeeRoutine = () => {
             return data
         }
     })
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+
+
 
     let handleRoutineDelete = async (id) => {
         Swal.fire({
@@ -27,7 +32,7 @@ const SeeRoutine = () => {
                 let { data } = await axiosSecure.delete(`/routine-schedule/${id}`);
                 console.log(data)
                 refetch();
-                if (data.deletedCount > 0) { 
+                if (data.deletedCount > 0) {
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",
@@ -37,6 +42,9 @@ const SeeRoutine = () => {
             }
         });
     }
+
+
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -51,19 +59,23 @@ const SeeRoutine = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                        {
-                            routines.map((routine, index) => <tr>
-                                <th>{index + 1}</th>
-                                <td>{routine.class[0]}</td>
-                                <td>{routine.date}</td>
-                                <td>
-                                    <Link to={'/dashboard/update-routine'} className="mr-4 btn">Update</Link>
-                                    <button onClick={() => handleRoutineDelete(routine._id)} className="btn bg-red-500 text-white">Delete</button>
-                                </td>
-                            </tr>)
-                        }
-
+                        {routines.length > 0 ? (
+                            routines.map((routine, index) => (
+                                <tr key={routine._id}>
+                                    <th>{index + 1}</th>
+                                    <td>{routine?.class[0]}</td>
+                                    <td>{routine?.date}</td>
+                                    <td>
+                                        <Link to={`/dashboard/update-routine/${routine._id}`} className="mr-4 btn">Update</Link>
+                                        <button onClick={() => handleRoutineDelete(routine._id)} className="btn bg-red-500 text-white">Delete</button>
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="4">No routines found.</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

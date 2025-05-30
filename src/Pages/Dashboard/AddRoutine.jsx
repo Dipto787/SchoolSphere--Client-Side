@@ -19,9 +19,11 @@ const AddRoutine = () => {
             return data
         }
     })
+ 
     refetch();
 
     let navigate = useNavigate();
+        
 
     const mutation = useMutation({
         mutationFn: async (routineData) => {

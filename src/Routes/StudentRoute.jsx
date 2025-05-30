@@ -8,7 +8,7 @@ const StudentRoute = ({ children }) => {
     console.log(isAdmin)
     if (isLoading || load) return <h1>Loading....</h1>
 
-    if (isAdmin?.admin === true) return children;
+    if (!isAdmin?.admin) return <h1>waot</h1>;
 
     if (student?.isRegistration === true) return children;
 

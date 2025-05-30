@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query"; 
+import { useQuery } from "@tanstack/react-query";
 import { FaAngleDoubleRight } from "react-icons/fa";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import UseAxiosSecure from "../../hooks/UseAxiosSecure";
-
+import errors from '../../assets/Swiper/error.webp'
 const OurStudent = () => {
     let axiosSecure = UseAxiosSecure();
 
@@ -14,12 +14,21 @@ const OurStudent = () => {
         }
     })
 
-    
+
 
     return (
         <div>
             <h1 className="text-center lg:mt-20 mt-20 text-4xl lg:text-6xl font-semibold text-red-500">------ Our Students ------</h1>
             <div className="grid grid-cols-1 gap-10 mt-16 px-5 lg:mt-32 lg:grid-cols-3">
+                {
+                    students.length === 0 && <div>
+                        <img className="m-auto mt-20" src={errors} alt="" />
+                        <p>
+                            No Student  Available 
+                        </p>
+                    </div>
+                }
+
                 {
                     students.slice(0, 9).map(student => <div className=" p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
                         <img src={student.img} alt="" className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
@@ -59,8 +68,8 @@ const OurStudent = () => {
                 }
 
             </div>
-                <Link to={'/our-student'} className="btn mt-4   bg-[#4cc9f0]">See All <FaAngleDoubleRight size={22} />
-                </Link>
+            <Link to={'/our-student'} className="btn mt-4   bg-[#4cc9f0]">See All <FaAngleDoubleRight size={22} />
+            </Link>
         </div>
     );
 };

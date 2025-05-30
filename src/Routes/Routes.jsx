@@ -15,6 +15,8 @@ import OurStudentsAdmin from "../Pages/Dashboard/OurStudentsAdmin";
 import AllStudents from "../Pages/Dashboard/AllStudents";
 import AddRoutine from "../Pages/Dashboard/AddRoutine";
 import SeeRoutine from "../Pages/Dashboard/SeeRoutine";
+import RoutineUpdate from "../Pages/Dashboard/RoutineUpdate";
+import ClassRoutine from "../Pages/Dashboard/ClassRoutine";
 
 const Routes = createBrowserRouter([
     {
@@ -45,13 +47,13 @@ const Routes = createBrowserRouter([
             },
             {
                 path:'/registration',
-                element:<RegistrationStudent></RegistrationStudent>
+                element:<StudentRoute><RegistrationStudent></RegistrationStudent></StudentRoute>
             }
         ]
     },
     {
         path: '/dashboard',
-        element:<PrivateRoute><StudentRoute><DashboardLayout></DashboardLayout></StudentRoute></PrivateRoute>,
+        element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
                 index: true,
@@ -78,8 +80,14 @@ const Routes = createBrowserRouter([
                 element:<SeeRoutine></SeeRoutine>
             },
             {
-                path:'/'
-            }
+                path:'update-routine/:id',
+                element:<RoutineUpdate></RoutineUpdate>
+            },
+            {
+                path:'class-routine',
+                element:<ClassRoutine></ClassRoutine>
+            },
+           
         ]
     }
 ]
