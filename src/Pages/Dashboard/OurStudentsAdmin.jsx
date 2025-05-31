@@ -58,61 +58,61 @@ const OurStudentsAdmin = () => {
 
 
     return (
-        <div className="overflow-x-auto">
-            <table className="table">
-                {/* head */}
-                <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>Name</th>
-                        <th>gender</th>
-                        <th>class</th>
-                        <th>old</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    {/* row 1 */}
-                    {
-                       !isLoading && students.map((student, index) => <tr>
-                            <th>
-                                {index + 1}
+        <div className="lg:overflow-x-auto  ">
+            <div className="w-[10px] lg:w-full">
+                <table className="table    ">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th className="hidden  lg:flex">
+                                #
                             </th>
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle h-12 w-12">
-                                            <img
-                                                src={student.img}
-                                                alt="Avatar Tailwind CSS Component" />
+                            <th>Name</th>
+                            <th>gender</th>
+                            <th>class</th>
+                            <th className="hidden  lg:flex">old</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {/* row 1 */}
+                        {
+                            !isLoading && students.map((student, index) => <tr>
+                                <th className="hidden lg:flex">
+                                    {index + 1}
+                                </th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar hidden lg:flex">
+                                            <div className="mask mask-squircle h-12 w-12">
+                                                <img
+                                                    src={student.img}
+                                                    alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">{student.name}</div>
+
                                         </div>
                                     </div>
-                                    <div>
-                                        <div className="font-bold">{student.name}</div>
+                                </td>
+                                <td>
+                                    {student.gender}
+                                </td>
+                                <td>
+                                    {student.className}
+                                </td>
+                                <td className="hidden  lg:flex">{student.old}</td>
+                                <th className="">
+                                    <button disabled={isLoading} onClick={() => handleConfirm(student.email, student)} className={'btn'}>Confirm</button>
+                                </th>
+                            </tr>)
+                        }
+                    </tbody>
 
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                {student.gender}
-                            </td>
-                            <td>
-                                {student.className}
-                            </td>
-                            <td>{student.old}</td>
-                            <th>
-                                <button disabled={isLoading} onClick={() => handleConfirm(student.email, student)} className={'btn'}>Confirm</button>
-
-                                
-                            </th>
-                        </tr>)
-                    }
-                </tbody>
-
-            </table>
+                </table>
+            </div>
         </div>
     );
 };

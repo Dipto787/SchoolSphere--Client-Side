@@ -31,7 +31,7 @@ const AllStudents = () => {
             if (result.isConfirmed) {
                 let { data: lal } = await axiosSecure.post('/students', student)
                 let { data } = await axiosSecure.patch(`/students/${email}`, { status: false })
-                console.log(data); 
+                console.log(data);
                 if (data.modifiedCount > 0) {
 
                     let { data: joy } = await axiosSecure.delete(`/students/${email}`);
@@ -47,32 +47,32 @@ const AllStudents = () => {
     }
 
     return (
-        <div className="overflow-x-auto">
-            <table className="table">
+        <div className="lg:overflow-x-auto">
+            <div className="w-[10px] lg:w-full">  <table className="table">
                 {/* head */}
                 <thead>
                     <tr>
-                        <th>
+                        <th className="hidden  lg:flex">
                             #
                         </th>
                         <th>Name</th>
                         <th>gender</th>
                         <th>class</th>
-                        <th>old</th>
+                        <th className="hidden  lg:flex">old</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     {/* row 1 */}
                     {
                         !isLoading && students.map((student, index) => <tr>
-                            <th>
+                            <th className="hidden  lg:flex">
                                 {index + 1}
                             </th>
                             <td>
                                 <div className="flex items-center gap-3">
-                                    <div className="avatar">
+                                    <div className="avatar hidden  lg:flex">
                                         <div className="mask mask-squircle h-12 w-12">
                                             <img
                                                 src={student.img}
@@ -91,7 +91,7 @@ const AllStudents = () => {
                             <td>
                                 {student.className}
                             </td>
-                            <td>{student.old}</td>
+                            <td className="hidden  lg:flex">{student.old}</td>
                             <th>
 
                                 <button disabled={isLoading} onClick={() => handleReject(student?._id, student?.email, student)} className={`btn bg-red-500 text-white  `}>Reject</button>
@@ -101,7 +101,7 @@ const AllStudents = () => {
                     }
                 </tbody>
 
-            </table>
+            </table></div>
         </div>
     );
 };

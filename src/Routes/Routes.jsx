@@ -10,13 +10,18 @@ import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
 import StudentHome from "../Pages/Dashboard/StudentHome";
 import MyClassRoom from "../Pages/Dashboard/MyClassRoom";
 import RegistrationStudent from "../Pages/RegistrationStudent";
-import StudentRoute from "./StudentRoute"; 
+import StudentRoute from "./StudentRoute";
 import OurStudentsAdmin from "../Pages/Dashboard/OurStudentsAdmin";
 import AllStudents from "../Pages/Dashboard/AllStudents";
 import AddRoutine from "../Pages/Dashboard/AddRoutine";
 import SeeRoutine from "../Pages/Dashboard/SeeRoutine";
 import RoutineUpdate from "../Pages/Dashboard/RoutineUpdate";
 import ClassRoutine from "../Pages/Dashboard/ClassRoutine";
+import AddExamSchedule from "../Pages/Dashboard/AddExamSchedule";
+import SeeUserNotification from "../Pages/Dashboard/SeeUserNotification";
+import ExamScheduleStudent from "../Pages/Dashboard/ExamScheduleStudent";
+import ExamScheduleAdmin from "../Pages/Dashboard/ExamScheduleAdmin";
+import VerifyAdmin from "../hooks/VerifyAdmin";
 
 const Routes = createBrowserRouter([
     {
@@ -46,48 +51,61 @@ const Routes = createBrowserRouter([
                 element: <Login></Login>
             },
             {
-                path:'/registration',
-                element:<StudentRoute><RegistrationStudent></RegistrationStudent></StudentRoute>
+                path: '/registration',
+                element:<PrivateRoute><RegistrationStudent></RegistrationStudent></PrivateRoute>
             }
         ]
     },
     {
         path: '/dashboard',
-        element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
-                index: true,
+                path: 'home',
                 element: <StudentHome></StudentHome>
             },
+          
             {
-                path:'myClassRoom',
-                element:<MyClassRoom></MyClassRoom>
+                path: 'our-students',
+                element:<VerifyAdmin> <OurStudentsAdmin></OurStudentsAdmin></VerifyAdmin>
             },
             {
-                path:'our-students',
-                element:<OurStudentsAdmin></OurStudentsAdmin>
+                path: 'all-students',
+                element:<VerifyAdmin> <AllStudents></AllStudents></VerifyAdmin>
             },
             {
-                path:'all-students',
-                element:<AllStudents></AllStudents>
+                path: 'add-routine',
+                element: <VerifyAdmin><AddRoutine></AddRoutine></VerifyAdmin>
             },
             {
-                path:'add-routine',
-                element:<AddRoutine></AddRoutine>
+                path: 'see-routine',
+                element: <VerifyAdmin><SeeRoutine></SeeRoutine></VerifyAdmin>
             },
             {
-                path:'see-routine',
-                element:<SeeRoutine></SeeRoutine>
+                path: 'update-routine/:id',
+                element: <VerifyAdmin><RoutineUpdate></RoutineUpdate></VerifyAdmin>
             },
             {
-                path:'update-routine/:id',
-                element:<RoutineUpdate></RoutineUpdate>
+                path: 'class-routine',
+                element: <StudentRoute> <ClassRoutine></ClassRoutine></StudentRoute>
             },
             {
-                path:'class-routine',
-                element:<ClassRoutine></ClassRoutine>
+                path: 'add-exam-schedule',
+                element: <VerifyAdmin><AddExamSchedule></AddExamSchedule></VerifyAdmin>
             },
-           
+            {
+                path: 'see-notification',
+                element: <StudentRoute><SeeUserNotification></SeeUserNotification></StudentRoute>
+            },
+            {
+                path: 'exam-schedule',
+                element: <StudentRoute><ExamScheduleStudent></ExamScheduleStudent></StudentRoute>
+            },
+            {
+                path: 'exam-schedule-admin',
+                element: <VerifyAdmin><ExamScheduleAdmin></ExamScheduleAdmin></VerifyAdmin>
+            }
+
         ]
     }
 ]

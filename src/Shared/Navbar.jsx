@@ -11,6 +11,8 @@ const Navbar = () => {
     let { student, isLoading } = IsStudent();
     let { isAdmin, isLoading: load } = IsAdmin();
     let axiosSecure = UseAxiosSecure();
+console.log(student)
+
     let { data: students = [], refetch, isLoading: isLoadings } = useQuery({
         queryKey: ['students'],
         queryFn: async () => {
@@ -18,8 +20,20 @@ const Navbar = () => {
             return data
         }
     })
-    refetch();
 
+
+
+    const { data: examData = [], refetch: reLoad } = useQuery({
+        queryKey: ['notifications'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/user-notification');
+            return res.data;
+        },
+
+    });
+
+    refetch();
+    reLoad();
     if (isLoading || load || isLoading || isLoadings) {
         return;
     }
@@ -29,6 +43,15 @@ const Navbar = () => {
     if (load) {
         return;
     }
+
+
+
+
+
+
+
+
+
     let Links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/our-student'}>Our Student</NavLink></li>
@@ -44,7 +67,7 @@ const Navbar = () => {
 
             {
                 !isLoading && student?.isRegistration === true || isAdmin?.admin === true ?
-                    <li ><NavLink to={'/dashboard'}>Dashboard</NavLink></li> : undefined
+                    <li ><NavLink to={'/dashboard/home'}>Dashboard</NavLink></li> : undefined
 
 
             }
@@ -54,13 +77,20 @@ const Navbar = () => {
 
 
 
-        {
-            isAdmin.admin === true ? <div className="relative">
-                <li><NavLink to={'/dashboard/our-students'}><IoMdNotificationsOutline size={30} /></NavLink> </li>
-                <p className="bg-red-500 absolute px-3 text-lg -top-4 left-8  text-white py-1 rounded-full">
-                    {studet.length}</p>
-            </div> : ''
-        }
+        <div className="hidden lg:flex">
+            {
+                isAdmin.admin === true ? <div className="relative">
+                    <li><NavLink to={'/dashboard/our-students'}><IoMdNotificationsOutline size={30} /></NavLink> </li>
+                    <p className="bg-red-500 absolute px-3 text-lg -top-4 left-8  text-white py-1 rounded-full">
+                        {studet.length}</p>
+                </div> :  !isLoading && student?.isRegistration === true && <div className="relative">
+                    <li><NavLink to={'/dashboard/see-notification'}><IoMdNotificationsOutline size={30} /></NavLink> </li>
+                    <p className="bg-red-500 absolute px-3 text-lg -top-4 left-8  text-white py-1 rounded-full">
+                        {examData.length}
+                    </p>
+                </div>
+            }
+        </div>
 
 
     </>;
@@ -78,6 +108,22 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to={'/'} className="btn btn-ghost text-xl">SchoolSphere</Link>
+                    <div className="lg:hidden list-none flex">
+                        {
+                            isAdmin.admin === true ? <div className="relative">
+                                <li><NavLink to={'/dashboard/our-students'}><IoMdNotificationsOutline size={30} /></NavLink> </li>
+                                <p className="bg-red-500 absolute px-3 text-lg -top-4 left-6 lg:left-8  text-white py-1 rounded-full">
+                                    {studet.length}</p>
+                            </div> : !isLoading && student?.isRegistration === true && <div className="relative">
+                                <li><NavLink to={'/dashboard/see-notification'}><IoMdNotificationsOutline size={30} /></NavLink> </li>
+                                <p className="bg-red-500 absolute px-3 text-lg -top-4 left-6 lg:left-8  text-white py-1 rounded-full">
+                                    {examData.length}
+                                </p>
+                            </div>
+                        }
+                    </div>
+
+
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

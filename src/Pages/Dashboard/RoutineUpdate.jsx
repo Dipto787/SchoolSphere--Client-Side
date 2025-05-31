@@ -18,25 +18,23 @@ const RoutineUpdate = () => {
             return data
         }
     })
-  
 
 
-    for (let day of days) {
-        console.log(routines.day)
 
-    }
+
 
     console.log(params.id)
     let navigate = useNavigate();
-
+    console.log(routines)
 
     const mutation = useMutation({
         mutationFn: async (routineData) => {
             let { data } = await axiosSecure.put(`/routine-schedule/${params.id}`, routineData);
             return data;
         },
-        onSuccess: (data) => {
-              refetch();
+        onSuccess: async (data) => {
+            refetch();
+            let { data: lal } = await axiosSecure.post('/user-notification', { className: routines.class, category: 'update-routine' });
             navigate('/dashboard/see-routine');
             toast.success(`Updated successFull `)
         },
@@ -44,8 +42,8 @@ const RoutineUpdate = () => {
             alert('Error: ' + error.message);
         },
     });
-    
-  
+
+
     const handleUpdate = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -65,7 +63,7 @@ const RoutineUpdate = () => {
 
         }
 
-       
+
         routineData.date = new Date().toISOString()
 
 
@@ -78,7 +76,7 @@ const RoutineUpdate = () => {
 
     return (
         <div className="relative">
-            <div className=" flex   border-2">
+            <div className=" lg:flex hidden  border-2">
                 <div>
                     PeriodNo:
                 </div>
@@ -93,7 +91,7 @@ const RoutineUpdate = () => {
             </div>
             <div className="flex w-full  gap-2  mt-11 " >
 
-                <div className="space-y-12 ">
+                <div className="space-y-12 flex-col lg:flex hidden ">
                     {
                         days.map(day =>
                             <div className="text-xl">
@@ -106,12 +104,15 @@ const RoutineUpdate = () => {
 
                 <form onSubmit={handleUpdate} className="" >
 
-                    <div className=" grid grid-cols-6   gap-4 ">
-                        {Array.from({ length: 6 }).map((_, index) => (
-                            <RoutineData schedule={routines} key={index} index={index} days={days} />
+                    <div className=" grid lg:grid-cols-6 grid-cols-2  gap-4 ">
+                   {Array.from({ length: 6 }).map((_, index) => (
+                            
+                            <div>
+                                  <h1 className="mb-2">{days[index]} :</h1><RoutineData key={index} index={index} days={days} />
+                          </div>
                         ))}
                     </div>
-                    <div className="px-36">
+                    <div className="lg:px-36">
                         <button className="btn bg-pink-500 text-white mt-5 w-full ">Add This Routine   </button>
                     </div>
                 </form>

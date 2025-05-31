@@ -19,19 +19,20 @@ const AddRoutine = () => {
             return data
         }
     })
- 
+
     refetch();
 
     let navigate = useNavigate();
-        
+
 
     const mutation = useMutation({
         mutationFn: async (routineData) => {
             let { data } = await axiosSecure.post('/routine-schedule', routineData);
             return data;
         },
-        onSuccess: (data) => {
+        onSuccess: async (data) => {
             navigate('/dashboard/see-routine');
+            let { data:lal } = await axiosSecure.post('/user-notification', { className, category: 'Add-routine' });
             toast.success(`Add This Routine To class ${className}`)
         },
         onError: (error) => {
@@ -77,11 +78,11 @@ const AddRoutine = () => {
 
     return (
         <div className="relative">
-            <div className=" flex   border-2">
+            <div className=" lg:flex hidden  border-2">
                 <div>
                     PeriodNo:
                 </div>
-                <div className="flex w-full px-28 justify-between">
+                <div className="flex  w-full px-28 justify-between">
                     {
                         days.map((day, index) =>
                             <div className=" text-center">
@@ -92,7 +93,7 @@ const AddRoutine = () => {
             </div>
             <div className="flex w-full  gap-2  mt-11 " >
 
-                <div className="space-y-12 mt-9">
+                <div className="space-y-12 hidden lg:flex flex-col mt-9">
                     {
                         days.map(day =>
                             <div className="text-xl">
@@ -104,7 +105,7 @@ const AddRoutine = () => {
 
 
                 <form className="mt-9" onSubmit={handleSubmit} >
-                    <div className="absolute border-2  top-10">
+                    <div className="absolute border-2  -top-10  lg:top-10">
                         <select onChange={(e) => setClassName(e.target.value)} className="text-center p-2" defaultValue={''} name="class" required id="">
                             <option disabled value=''>Select Class</option>
                             <option value="6">6</option>
@@ -115,12 +116,15 @@ const AddRoutine = () => {
                         </select>
 
                     </div>
-                    <div className=" grid grid-cols-6   gap-4 ">
+                    <div className=" grid lg:grid-cols-6 grid-cols-2  gap-4 ">
                         {Array.from({ length: 6 }).map((_, index) => (
-                            <RoutineData key={index} index={index} days={days} />
+                            
+                            <div>
+                                  <h1 className="mb-2">{days[index]} :</h1><RoutineData key={index} index={index} days={days} />
+                          </div>
                         ))}
                     </div>
-                    <div className="px-36">
+                    <div className="lg:px-36">
                         <button className="btn bg-pink-500 text-white mt-5 w-full ">Add This Routine   </button>
                     </div>
                 </form>

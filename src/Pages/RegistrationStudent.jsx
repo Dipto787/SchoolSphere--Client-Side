@@ -25,7 +25,7 @@ const RegistrationStudent = () => {
         },
         onSuccess: () => {
             toast.success('Please Wait For Admin Approach');
-            navigate('/our-student');
+            navigate('/');
 
         }
     })

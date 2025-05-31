@@ -8,11 +8,11 @@ const StudentRoute = ({ children }) => {
     console.log(isAdmin)
     if (isLoading || load) return <h1>Loading....</h1>
 
-    if (!isAdmin?.admin) return <h1>waot</h1>;
+    // if (!isAdmin?.admin) return children;
 
     if (student?.isRegistration === true) return children;
 
-    return <Navigate to={'/'} replace='true' ></Navigate>
+    return <Navigate to={'/registration'} replace='true' ></Navigate>
 };
 
 export default StudentRoute;
